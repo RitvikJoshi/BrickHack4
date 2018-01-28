@@ -16,7 +16,7 @@ def getLocationData(itemNumber):
 
     try:
         conn = http.client.HTTPSConnection('wegmans-es.azure-api.net')
-        conn.request("GET", "/productpublic/productlocations/"+params, "{body}", headers)
+        conn.request("GET", "/productpublic/productlocations/"+str(params), "{body}", headers)
         response = conn.getresponse()
         data = response.read()
         print(data)
