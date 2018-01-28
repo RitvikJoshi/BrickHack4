@@ -17,18 +17,19 @@ try:
     response = conn.getresponse()
     data = response.read()
     data = data.decode('ASCII')
-    data = json.loads(data)
-    itemID = data['Results'][0]['ItemNumber']
-    #print(data)
-    #print(itemID)
-    conn.request("GET", "/productpublic/productavailability/"+str(itemID)+"/stores?" + item, "{body}", headers)
-    response = conn.getresponse()
-    data = response.read()
-    data = data.decode('ASCII')
-    data = json.loads(data)
-    print(item+" Product Avilable" if len(data['StoreAvailability'])>0 else "Unavilable")
+    if not "error" in data:
+        data = json.loads(data)
+        itemID = data['Results'][0]['ItemNumber']
+        #print(data)
+        #print(itemID)
+        conn.request("GET", "/productpublic/productavailability/"+str(itemID)+"/stores?" + item, "{body}", headers)
+        response = conn.getresponse()
+        data = response.read()
+        data = data.decode('ASCII')
+        data = json.loads(data)
+        print(item+" Product Avilable" if len(data['StoreAvailability'])>0 else "Unavilable")
 
-    #print(data)
+        #print(data)
 
 
     conn.close()
