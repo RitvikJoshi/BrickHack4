@@ -8,7 +8,8 @@ http://amzn.to/1LGWsLG
 """
 
 from __future__ import print_function
-from dynamo import getRecipe, getIngrident,email_send
+from dynamo import getRecipe, getIngrident
+from sms1 import sms
 
 
     
@@ -149,13 +150,13 @@ def set_recipe_in_session(intent, session):
             session_attributes = create_favorite_recipe_attributes(recipe)
             ingredients=getIngrident(recipe)
             print(ingredients)
-            email_send()
             speech_output = "The ingredients added to the cart are"+ ingredients
+            sms(speech_output)
             reprompt_text = "You can ask me party recipes by saying, " \
                              "suggest me party recipes in vegeterian or non veg?"
             
         else:
-            speech_output = "bhjbhj I'm not sure what your category for the party recipe is. " \
+            speech_output = "I'm not sure what your category for the party recipe is. " \
                             "Please try again."
             reprompt_text = "I'm not sure what your category for the party recipe is. " \
                             "You can ask me party recipes by saying, " \

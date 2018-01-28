@@ -5,7 +5,7 @@ def lambda_handler(event, context):
     email_send()
 
 def email_send():
-    SENDER = "sup.3392@gmail.com"
+    SENDER = "saj3899@rit.edu"
     
     # Replace recipient@example.com with a "To" address. If your account 
     # is still in the sandbox, this address must be verified.

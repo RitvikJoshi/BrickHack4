@@ -48,5 +48,5 @@ def getIngrident(name):
      missed=""
     else:
      missed+=miss_product
-     
+     # result+missed
     return result+missed
